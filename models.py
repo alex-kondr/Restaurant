@@ -80,6 +80,7 @@ class OrderItem(db.Model):
 
     id: Mapped[str] = mapped_column(String(500), primary_key=True)
     menu_id: Mapped[str] = mapped_column(ForeignKey(Menu.id, ondelete="CASCADE"))
+    order_id: Mapped[str] = mapped_column(ForeignKey("orders.id", ondelete="CASCADE"))
     quantity: Mapped[int] = mapped_column(default=1)
 
     menu_item: Mapped[Menu] = relationship(back_populates="orders_item")
