@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_auhtnticated and "(admin)" in currnet_user.fullname %}
+<form method="post">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.weight.label(class="form-label") }}
+        {{ form.weight(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.ingredients.label(class="form-label") }}
+        {{ form.ingredients(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.price.label(class="form-label") }}
+        {{ form.price(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.active.label(class="form-label") }}
+        {{ form.active(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.picture.label(class="form-label") }}
+        {{ form.picture(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Опис</th>
+            <th>Вага</th>
+            <th>Інгредієнти</th>
+            <th>Ціна</th>
+            <th>Доступна</th>
+            <th>Фото</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menus %}
+            <tr>
+                <td>{{ menu.name }}</td>
+                <td>{{ menu.description }}</td>
+                <td>{{ menu.weight }}</td>
+                <td>{{ menu.ingredients }}</td>
+                <td>{{ menu.price }}</td>
+                <td>{{ menu.active }}</td>
+                <td>{{ menu.picture }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

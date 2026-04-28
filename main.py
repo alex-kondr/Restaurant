@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, LoginManager, log
 from dotenv import load_dotenv
 
 from models import db, User, Menu, Reservation, OrderItem, Order
-from forms import SignInForm, SignUpForm
+from forms import SignInForm, SignUpForm, MenuForm
 
 
 load_dotenv()
@@ -80,6 +80,12 @@ def logout():
 @login_required
 def index():
     return render_template("index.html")
+
+
+@app.route("/menu/", methods=["GET", "POST"])
+@login_required
+def menu():
+    pass
 
 
 if __name__ == "__main__":
